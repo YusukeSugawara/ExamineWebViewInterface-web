@@ -35,12 +35,10 @@ function callbackToNative(eventName, parameters) {
 
     // iOS detection from: http://stackoverflow.com/a/9039885/177710
     if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        // TODO: Implement iOS logics
-
-        /*
-        UIWebView and JavaScriptInterface in Swift
-        https://stackoverflow.com/a/37373745
-        */
+        webkit.messageHandlers.callbackHandler.postMessage({
+            eventName: eventName,
+            parameters: parameters
+        });
         return;
     }
 
