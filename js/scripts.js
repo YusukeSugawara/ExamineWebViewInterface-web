@@ -1,5 +1,3 @@
-const CUSTOM_URL_SCHEME = "work.yusukesugawara.callback://";
-
 var elementHello = null;
 
 window.onload = function() {
@@ -29,6 +27,7 @@ function callbackToNative(eventName, parameters) {
     }
 
     if (/android/i.test(userAgent)) {
+        const CUSTOM_URL_SCHEME = "work.yusukesugawara.callback://";
         window.location.href = CUSTOM_URL_SCHEME + eventName + '/?' + JSON.stringify(parameters);
         return;
     }
